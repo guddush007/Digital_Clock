@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock - Guddu Sharma</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="ddmmyyyy">
+                <p id="day"></p> 
+                <span id="date">00</span>
+                <span>-</span>
+                <span id="month">00</span>
+                <span>-</span>
+                <span id="year">0000</span><br>
+                
+            </div>
+            <div class="clock">
+                <span id="hours">00</span>
+                <span>:</span>
+                <span id="minutes">00</span>
+                <span>:</span>
+                <span id="seconds">00</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        let hrs = document.getElementById("hours");
+        let min = document.getElementById("minutes");
+        let sec = document.getElementById("seconds");
+        setInterval(()=> {
+            let currentTime = new Date();
+            hrs.innerHTML = (currentTime.getHours() < 10 ? "0" : "") + currentTime.getHours();
+            min.innerHTML = (currentTime.getMinutes() < 10 ? "0" : "") + currentTime.getMinutes();
+            sec.innerHTML = (currentTime.getSeconds() < 10 ? "0" : "") + currentTime.getSeconds();
+        }, 1000)
+        let date = document.getElementById("date");
+        let month = document.getElementById("month");
+        let year = document.getElementById("year");
+        let day = document.getElementById("day");
+        const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        setInterval(()=> {
+            let currentTime = new Date();
+            date.innerHTML = (currentTime.getDate() < 10 ? "0" : "") + currentTime.getDate();
+            month.innerHTML = ((currentTime.getMonth() + 1) < 10 ? "0" : "") + (currentTime.getMonth() + 1);
+            year.innerHTML = (currentTime.getFullYear() < 10 ? "0" : "") + currentTime.getFullYear();
+            day.innerHTML = daysOfWeek[currentTime.getDay()];
+        }, 1000)
+    </script>
+</body>
+</html>
